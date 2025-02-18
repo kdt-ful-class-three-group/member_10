@@ -3,7 +3,7 @@ const http = require('http');
 const fs = require('fs');
 
 //* GET,POST 만들어봄
-//todo 메인페이지 인덱스랑 연결해보고 form도 연결해보자
+//todo form태그 POST랑 연결시도
 const server = http.createServer(function (request, response) {
   if (request.method === 'GET') {
     if (request.url === "/") {
@@ -13,7 +13,15 @@ const server = http.createServer(function (request, response) {
     }
   };
   if (request.method === 'POST') {
-    
+    if (request.url === "/practice") {
+      response.on('data', function (data) {
+        console.log(data);
+
+
+      });
+      response.on('end', function () {
+      })
+    }
   }
 });
 
