@@ -6,7 +6,11 @@ const fs = require('fs');
 //todo 메인페이지 인덱스랑 연결해보고 form도 연결해보자
 const server = http.createServer(function (request, response) {
   if (request.method === 'GET') {
-    
+    if (request.url === "/") {
+      const index = fs.readFileSync('index.html');
+      response.writeHead(200, { "Content-Type": "text/html" });
+      response.end(index);
+    }
   };
   if (request.method === 'POST') {
     
