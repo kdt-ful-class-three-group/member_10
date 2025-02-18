@@ -18,5 +18,5 @@ const server = http.createServer(function (request, response) {
 });
 
 server.listen(4000, function () {
-  console.log("Loading... http://localhost:3000/");
+  console.log("Loading... http://localhost:4000/"); // ㅋㅋ 콘솔 주소 3000으로 찍었다. //
 });
