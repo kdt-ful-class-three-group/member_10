@@ -33,6 +33,7 @@ const server = http.createServer(function (request, response) {
         //* JSON을 화면 출력하기 위한 작업들 // 
         response.writeHead(200, { "Content-Type": "application/json" });
         response.end(json);
+        console.log("저장완료");
       })
     }
   }
