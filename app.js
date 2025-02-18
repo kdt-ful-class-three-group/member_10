@@ -14,17 +14,17 @@ const server = http.createServer(function (request, response) {
   };
   if (request.method === 'POST') {
     if (request.url === "/practice") {
-      response.on('data', function (data) {
+      request.on('data', function (data) {
         console.log(data);
 
 
       });
-      response.on('end', function () {
+      request.on('end', function () {
       })
     }
   }
 });
 
 server.listen(4000, function () {
-  console.log("Loading... http://localhost:4000/"); // ㅋㅋ 콘솔 주소 3000으로 찍었다. //
+  console.log("Loading... http://localhost:4000/"); 
 });
