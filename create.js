@@ -3,6 +3,7 @@
 function createHTML(title, body, list) {
   return `
   <!DOCTYPE html>
+  <html>
   <head>
     <meta charset="UTF-8">
     <title>${title}</title>
@@ -11,8 +12,6 @@ function createHTML(title, body, list) {
     <div>
     <h2>이름 추가</h2>
     ${body}
-    <h2>이름 목록</h2>
-    ${list}
     </div>
   </body>
   </html>
@@ -38,3 +37,5 @@ function createForm() {
   `
   return form;
 }
+
+export { createHTML, createForm };
