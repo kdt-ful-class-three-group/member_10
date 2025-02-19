@@ -27,12 +27,15 @@ const server = http.createServer(function (request, response) {
         
         //* JSON에 데이터를 집어 넣기위한 작업. 
         const json = JSON.stringify(stringData, null, 2);
-        console.log(json);
-        fs.appendFileSync('data.JSON', json);
+        // console.log(json);
+         fs.appendFileSync('data.JSON', json);
 
+         const readJSON = fs.readFileSync('data.JSON')
+        // console.log(readJSON);
+        
         //* JSON을 화면 출력하기 위한 작업들 // 
         response.writeHead(200, { "Content-Type": "application/json" });
-        response.end(json);
+        response.end(readJSON);
         console.log("저장완료");
       })
     }
