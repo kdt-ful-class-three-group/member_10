@@ -14,41 +14,20 @@ const server = http.createServer(function (request, response) {
   const url = request.url;
 
 
-
+  
+  const readJSON = fs.readFileSync('data.JSON');
   if (method === 'GET') {
     if (url === "/") {
-      const index = fs.readFileSync('index.html');
+      // const index = fs.readFileSync('index.html');
       response.writeHead(200, { "Content-Type": "text/html" });
-      response.end(index);
+      response.end(createHTML('practice', createForm(), createList(readJSON)));
     }
   };
-  const realData = [];
   if (method === 'POST') {
-    if (url === "/practice") {
-      request.on('data', function (data) {
-        realData.push(data);
-      });
-      request.on('end', function () {
-        //* toString으로 변환후 쿼리스트링 파스로 콘솔찍어봄. 콘솔은 다찍어봄. ㅋㅋ//
-        const toStringData = realData.toString();
-        const stringData = qs.parse(toStringData);
-        
-        //* JSON에 데이터를 집어 넣기위한 작업. 
-        const json = JSON.stringify(stringData, null, 2);
-        console.log(json);
-        fs.appendFileSync('data.JSON', json);
-        const a = "안녕";
-        const b = "list"
-        //* JSON을 화면 출력하기 위한 작업들 // 
-        response.end(createHTML(a, json, createList(realData)));
-        
-        // response.writeHead(200, { "Content-Type": "application/json" });
-        // response.end(json);
-        console.log("저장완료");
-      })
+    if (url === '/practice') {
+      
     }
   }
-});
 
 server.listen(4000, function () {
   console.log("Loading... http://localhost:4000/"); 
@@ -82,3 +61,13 @@ function createList(userList) {
     return list;
   }
 };
+
+function createForm() {
+  const form = `
+  <form action="/practice" method="post"> 
+      <input type="text" name="name" placeholder="Name">
+      <button type="submit">추가</button>
+  </form>
+  `
+  return form;
+}

@@ -27,4 +27,14 @@ function createList(userList) {
 
     return list;
   }
+};
+
+function createForm() {
+  const form = `
+  <form action="/practice" method="post"> 
+      <input type="text" name="name" placeholder="Name">
+      <button type="submit">추가</button>
+  </form>
+  `
+  return form;
 }
